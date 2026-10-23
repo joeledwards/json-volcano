@@ -1,0 +1,23 @@
+[package]
+name = "json-volcano"
+version = "0.1.0"
+edition = "2024"
+description = "Reproducible streaming JSON fixtures with bounded memory"
+license = "MIT"
+keywords = ["json", "generator", "streaming", "testing"]
+categories = ["development-tools::testing", "command-line-utilities"]
+
+[features]
+default = []
+cli = ["dep:clap"]
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"], optional = true }
+
+[dev-dependencies]
+json-skimmer = { path = "../json-skimmer", version = "0.1.0" }
+
+[[bin]]
+name = "json-volcano"
+path = "src/main.rs"
+required-features = ["cli"]
